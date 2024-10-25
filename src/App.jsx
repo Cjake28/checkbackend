@@ -21,21 +21,22 @@ function App() {
 
   const checkAuth = async () => {
     try {
-      const response = await axios.get(`${API_URL}/check-auth`, { withCredentials: true });
-      console.log("checkAuth: ",response);
+        const response = await fetch("https://cemetery-mapping-system.onrender.com/api/auth/check-auth", {
+            method: 'GET',
+            credentials: 'include', // Include cookies
+        });
 
-      if(!response.data.success){
-        console.log("checkAuth user false");
-        return
-      }
+        if (!response.ok) {
+            throw new Error('Authentication check failed');
+        }
 
-      console.log("cehckAUth response: ",response);
-
+        const data = await response.json();
+        console.log('Authentication status:', data);
     } catch (error) {
-      console.log(error);
-      throw error;
+        console.error('Check auth error:', error.message);
     }
-  };
+};
+
 
   const signout = async () => {
     try{
