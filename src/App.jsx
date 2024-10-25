@@ -5,13 +5,12 @@ import './App.css'
 import axios from 'axios';
 
 const API_URL = "https://cemetery-mapping-system.onrender.com/api/auth";
-axios.defaults.withCredentials = true;
 
 function App() {
 
   const login = async () => {
     try {
-      const response = await axios.post(`${API_URL}/signin`, { username: 'admin', password: 'password123' });
+      const response = await axios.post(`${API_URL}/signin`, { username: 'admin', password: 'password123' }, { withCredentials: true });
       console.log(response);
     } catch(error){
       console.log("login error: ", error.response?.data?.message );
@@ -22,7 +21,7 @@ function App() {
 
   const checkAuth = async () => {
     try {
-      const response = await axios.get(`${API_URL}/check-auth`);
+      const response = await axios.get(`${API_URL}/check-auth`, { withCredentials: true });
       console.log("checkAuth: ",response);
 
       if(!response.data.success){
