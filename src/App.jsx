@@ -5,10 +5,10 @@ import './App.css'
 import axios from 'axios';
 
 const API_URL = "https://cemetery-mapping-system.onrender.com/api/auth";
-  const [loginresponse, setLoginResponse] = useState('');
-  const [checkauth, setCheckauth] = useState('');
 
 function App() {
+  const [loginresponse, setLoginResponse] = useState('');
+  const [checkauth, setCheckauth] = useState('');
 
   const login = async () => {
     try {
