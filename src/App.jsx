@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios';
 
-const API_URL = "https://cemetery-mapping-system.onrender.com/api/auth";
+const API_URL = "/api/auth";
 
 function App() {
   const [loginresponse, setLoginResponse] = useState('');
@@ -12,7 +12,7 @@ function App() {
 
   const login = async () => {
     try {
-      const response = await axios.post(`${API_URL}/signin`, { username: 'admin', password: 'password123' }, { withCredentials: true });
+      const response = await axios.post(`/api/auth//signin`, { username: 'admin', password: 'password123' }, { withCredentials: true });
       console.log(response);
 
       setLoginResponse(response?.data?.message);
@@ -25,7 +25,7 @@ function App() {
 
   const checkAuth = async () => {
     try {
-        const response = await fetch("https://cemetery-mapping-system.onrender.com/api/auth/check-auth", {
+        const response = await fetch("/api/auth/check-auth", {
             method: 'GET',
             credentials: 'include', // Include cookies
         });
@@ -51,7 +51,7 @@ function App() {
 
   const signout = async () => {
     try{
-      const response = await axios.post(`${API_URL}/signout`);
+      const response = await axios.post("/api/auth/signout");
       console.log(response);
     }catch(error){
       console.log(error)}
